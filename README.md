@@ -3,7 +3,7 @@ Unique and original calendar/task organizer spreadsheet template.
 
 ## To-do
 - [x] Google Sheets compatible;
-  - [ ] Apps Script autorun trigger;
+  - [x] Apps Script autorun trigger;
 - [ ] LibreOffice/OpenOffice Calc (.ods) compatible;
 - [ ] Microsoft Excel (.xlsx) compatible;
 

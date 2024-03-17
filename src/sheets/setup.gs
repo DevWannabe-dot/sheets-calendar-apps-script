@@ -51,7 +51,7 @@ function find_AmountOfDaysLeftInMonth(date, month, year)
 
 function setup(mainFunctionCall) {
   // If sheet already contains values, must NOT setup
-  if(!(mainSheet.getRange(3, 2).isBlank())) return false;
+  if(!(mainSheet.getRange(3, 1).isBlank())) return false;
 
   const sampleEvents = ["Evento 1", "Evento 2", "Evento 3"];
 

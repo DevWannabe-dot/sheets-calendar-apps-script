@@ -18,12 +18,12 @@ function findEvent_returnDate()
   let data = sheet.getDataRange().getValues();            // macro to retrieve (int row, int col) cell data
   let nDatesWritten = 0;
 
-  for(let i = (1+todayDay); i <= 32; i++) {
+  for(let i = (tableHeader_rowValue_offset+todayDay); i <= 32; i++) {
     // Columns C:G
 
     for(let j = 3; j <= 7; j++) {
       if(sheet.getRange(i, j).getValue() == '') {} else {
-        mainSheet.getRange(3 + nDatesWritten, 2).setValue(sheet.getRange(i+1, 1).getValue());
+        mainSheet.getRange(3 + nDatesWritten, 2).setValue(sheet.getRange(i, 1).getValue());
         nDatesWritten++;
       }
     }

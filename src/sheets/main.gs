@@ -47,7 +47,13 @@ function highlightToday_sEntry()
   let sheet = ss.getSheets()[new Date().getMonth() + 1];
   let dd = 2 + new Date().getDate();
   
-  sheet.getRange(dd-1, 1).setBackgroundRGB(255, 255, 255)
+  if(dd == (2 + 1)){
+    let sheet_old = ss.getSheets()[new Date().getMonth() + 1 - 1];
+    sheet_old.getRange("A31:A33").clearFormat();          // ranges from the 29th to the 31st day of the month
+  } else {
+    sheet.getRange(dd-1, 1).clearFormat();
+  }
+  
   sheet.getRange(dd, 1).setBackgroundRGB(255, 255, 0);
 }
 

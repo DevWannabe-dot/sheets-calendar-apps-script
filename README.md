@@ -10,5 +10,5 @@ Unique and original calendar/task organizer spreadsheet template.
 ## How to build
 ### Google Sheets
 1. `git clone https://github.com/DevWannabe-dot/sheets-calendar-apps-script.git`
-2. `.\sheets-calendar-apps-script\sheets\Calendario-1.0.url`
+2. Click to open URL `sheets-calendar-apps-script\sheets\Calendario.url`
 3. Proceed to `Extensions > Apps Script` to edit the source files at `.\sheets-calendar-apps-script\src\sheets`

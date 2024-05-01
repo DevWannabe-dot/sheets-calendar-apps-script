@@ -13,6 +13,13 @@ const todayDay = new Date().getDate();
 const sheet = ss.getSheets()[new Date().getMonth() + 1];  // getMonth() returns 0-11 months, not 1-12
 
 /* Functions */
+function onOpen(e)
+{
+  SpreadsheetApp.getUi().createMenu("Atualizar")
+  .addItem("Atualizar agora", "main")
+  .addToUi();
+}
+
 function findEvent_returnDate()
 {
   let data = sheet.getDataRange().getValues();            // macro to retrieve (int row, int col) cell data

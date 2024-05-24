@@ -12,6 +12,8 @@ const globalUpcomingDatesRange = "B3:B1000";              // all the possible ce
 const todayDay = new Date().getDate();
 const sheet = ss.getSheets()[new Date().getMonth() + 1];  // getMonth() returns 0-11 months, not 1-12
 
+let nDatesWritten = 0;
+
 /* Functions */
 function onOpen(e)
 {
@@ -20,20 +22,32 @@ function onOpen(e)
   .addToUi();
 }
 
+function writeEventsWithinInterval(sourceSheet, beginIndex, endIndex)
+{
+  for(let i = beginIndex; i <= endIndex; i++)
+  {
+    // Columns C:G (5 possible event entries)
+    for(let j = 3; j <= 7; j++)
+    {
+      if(sourceSheet.getRange(i, j).getValue() != '')
+      {
+        mainSheet.getRange(tableHeader_rowValue_offset + (++nDatesWritten), 2).setValue(sourceSheet.getRange(i, 1).getValue());
+      }
+    }
+  }
+}
+
 function findEvent_returnDate()
 {
   let data = sheet.getDataRange().getValues();            // macro to retrieve (int row, int col) cell data
+  let nextSheet = ss.getSheets()[new Date().getMonth() + 1 + 1];
   let nDatesWritten = 0;
 
-  for(let i = (tableHeader_rowValue_offset+todayDay); i <= 33; i++) {
-    // Columns C:G
+  writeEventsWithinInterval(sheet, tableHeader_rowValue_offset + todayDay, tableHeader_rowValue_offset + 31);
 
-    for(let j = 3; j <= 7; j++) {
-      if(sheet.getRange(i, j).getValue() == '') {} else {
-        mainSheet.getRange(3 + nDatesWritten, 2).setValue(sheet.getRange(i, 1).getValue());
-        nDatesWritten++;
-      }
-    }
+  if(sheet.getRange(tableHeader_rowValue_offset+todayDay+8, 1).isBlank()) // if no data is found after the next seven days, begin showing next month's schedule
+  {
+    writeEventsWithinInterval(nextSheet, tableHeader_rowValue_offset + 1, tableHeader_rowValue_offset + 1 + 7);
   }
 }
 

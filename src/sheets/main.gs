@@ -66,8 +66,10 @@ function highlightToday_sEntry()
     sheet_old.getRange("A31:A33").clearFormat();          // ranges from the 29th to the 31st day of the month
   } else {
     sheet.getRange(dd-1, 1).clearFormat();
+    sheet.getRange(dd-1, 1).setFontSize(11); // New
   }
-  
+
+  sheet.getRange(dd, 1).setFontSize(11); // New
   sheet.getRange(dd, 1).setBackgroundRGB(255, 255, 0);
 }
 
@@ -78,3 +80,4 @@ function main()
   clearOutdatedEvents();
   findEvent_returnDate();
 }
+
